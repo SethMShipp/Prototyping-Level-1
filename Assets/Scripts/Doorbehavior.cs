@@ -1,14 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.VFX;
 
-public class WeaponCrate : MonoBehaviour
+public class Doorbehavior : MonoBehaviour
 {
-    [SerializeField]
-    private VisualEffect _visualEffect;
-
-    private Animator _animator;
+    [SerializeField] private Animator _animator;
+    public Collider doorCollider;
 
 
     void Start()
@@ -21,16 +20,15 @@ public class WeaponCrate : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             _animator.SetBool("Open", true);
+            doorCollider.enabled = false;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
         _animator.SetBool("Open", false);
+        doorCollider.enabled=true; 
     }
 
-    private void OnLidLifted()
-    {
-        _visualEffect.SendEvent("OnPlay");
-    }
+   
 }
