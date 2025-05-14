@@ -23,12 +23,4 @@ public class Doorbehavior : MonoBehaviour
             doorCollider.enabled = false;
         }
     }
-
-    private void OnTriggerExit(Collider other)
-    {
-        _animator.SetBool("Open", false);
-        doorCollider.enabled=true; 
-    }
-
-   
 }
